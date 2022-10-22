@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./bootstrap.css">
+        
+    <title>Projet LIFAP7</title>
+</head>
+<body>
+    <h1 class="text-center">Projet LIFAP7: PAC-MAN</h1>
+
+    <div class="mt-4 text-center">
+        Yoan Parra 11505740
+        <br>
+        Willy Jacquet 11806811
+    </div>
+    
+    <div class="mt-4 text-center">
+        <em>Université Claude Bernard Lyon 1</em>
+        <br>
+        <small>Semestre Printemps 2020</small>
+    </div>
+
+    <h4 class="mt-4">Fonctionnalités</h4>
+
+        <p class="pl-2">
+            Nous avons travaillé en simultané via LiveShare à raison de deux heures par jour pendant deux semaines,
+            soit un total approximatif de 56 heures - voir historique des commits <a href="https://forge.univ-lyon1.fr/p1806811/pacman">Forge</a>.
+            Nous avons tout deux fourni le même effort.
+        </p>
+
+        <h5>Terrain / Murs / Wraparound / Pac-gommes ~10h</h5>
+
+        <h5>Temps réel ~5h</h5>
+
+        <p class="pl-2">
+            Avec les paramètres par défaut, le jeu s'actualise 30 fois par secondes, et autant d'images à l'écran.
+            Pacman et les fantômes se déplacent de 5 cases par seconde avec 6 images de transitions entre chacune.
+        </p>
+
+        <h5>Animations ~15h</h5>
+
+        <p class="pl-2">
+            Créations des ressources - Sprite, KeyFrame, Animation.
+            Implémentation d'une state machine - Animator - et de commandes.
+        </p>
+
+        <h5>Écran titre / Game Over / Mort de pacman ~10h</h5>
+
+        <p class="pl-2">
+            Implémentation partiel d'un automate pour gérer les états du jeu - Model.
+        </p>
+
+        <h5>Affichage de texture et de texte ~5h</h5>
+
+        <p class="pl-2">
+            Ainsi que le chargement et stockage des ressources.
+        </p>
+
+        <h5>IA des fantomes / Super pac-gommes ~10h</h5>
+
+        <p class="pl-2">
+            Implémentation d'un automate pour les différents comportements - Actor.
+        </p>
+
+        <h5>Score ~2h</h5>
+
+    <h4 class="mt-4">Documentation UML</h4>
+
+        <div class="text-center">
+            <img src="./diagram/Application.PNG">
+        </div>
+
+        <div class="text-center">
+            <img src="./diagram/View.PNG">
+        </div>
+
+        <div class="text-center">
+            <img src="./diagram/Animator.PNG">
+        </div>
+
+    <h4 class="mt-4">Choix de conception</h4>
+
+        <h5>Composition</h5>
+
+        <p class="pl-2">
+            La composition a été préféré à l'héritage. Ce choix s'est imposé naturellement.
+        </p>
+
+        <h5>Classes immuables</h5>
+
+        <p class="pl-2">
+            Afin que les objets à sémantique de valeur - Fraction, Transformation2, Vector2, etc - soient partagés et
+            imprevisiblement modifés, leur interface a été rendu immuable.
+        </p>
+
+        <h5>Interface minimale</h5>
+
+        <p class="pl-2">
+            Toute méthode qui puisse être implémenté comme une fonction externe à la classe - fonction statique dans un espace de nom différent - doit l'être.
+            cf. 
+            <a href="https://martinfowler.com/bliki/MinimalInterface.html">Martin Fowler - MinimalInterface</a>,
+            <a href="https://www.youtube.com/watch?v=WLDT1lDOsb4">CppCon 2017: Klaus Iglberger “Free Your Functions!”</a>
+        </p>
+
+        <h5>Identifiants</h5>
+
+        <p class="pl-2">
+            Chaque ressource est référencée par un identifiant typé.
+            Cela permet un découplage des ressources entre elles et par incidence du model et de la vue.
+            Par exemple, la classe Animation nécessite de connaitre quel sprite afficher à quel instant, mais pas le sprite en lui même.
+            La vue s'occupe d'afficher l'image à correspondante à l'indentifiant.
+            </div>
+        </p>
+        
+    <h2 class="mt-4">Captures d'écran</h2>
+
+        <div class="text-center">
+            <img src="./capture/capture_1.PNG">
+        </div>
+
+        <div class="text-center">
+            <img src="./capture/capture_2.PNG">
+        </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
